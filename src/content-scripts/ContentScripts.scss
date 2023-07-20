@@ -1,0 +1,28 @@
+#chrome-extension-content-base-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+.right_container_show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.right_container_hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.right_container_hide {
+  display: hide;
+}
+
+svg {
+  width: 1.2em;
+  height: 1.2em;
+}

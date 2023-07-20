@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Jump To Editor",
+  "description": "Work with @babel/preset-react-> @babel/plugin-transform-react-jsx-source;Operations:Cmd/Win + LeftClick: Jump to the code directly, Cmd/Win + RightClick: Show the Ancestors and Descendants of the React Components.And you can use 'install' function to install npm packages at your consolement",
+  "version": "1.1",
+
+  "icons": {
+    "16": "icons/ic_16.ico",
+    "48": "icons/ic_48.ico",
+    "128": "icons/ic_128.ico"
+  },
+
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "activeTab",
+    "storage",
+    "background",
+    "tabCapture",
+    "scripting"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "js/background.js"
+  },
+
+  "action": {
+    "default_icon": "icons/ic_16.ico",
+    "default_title": "Jump to Editor Settings",
+    "default_popup": "html/popup.html"
+  },
+
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["js/contentScripts.js"],
+    "css": ["css/contentScripts.css"],
+    "run_at": "document_start"
+  }],
+
+  "web_accessible_resources": [{
+    "resources": ["/js/inject.js"],
+    "matches": ["<all_urls>"]
+  }, {
+    "resources": ["/images/*"],
+    "matches": ["<all_urls>"]
+  }],
+
+  "minimum_chrome_version": "5"
+}
