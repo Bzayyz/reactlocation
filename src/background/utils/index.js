@@ -30,11 +30,14 @@ export const openComponentInEditor = (tabId, Keys) => {
       }
     }
     const { _debugSource, elementType } = fiberNodeInstance ?? {};
-    if (_debugSource)
+    if (_debugSource) {
       return {
         source: _debugSource,
-        ComponentName: elementType?.displayName ?? "",
+        ComponentName:
+          elementType?.displayName || _debugSource?.componentName || "",
       };
+    }
+
     return getFallbackDebugSourceFromElement(parentElement);
   };
 
@@ -44,7 +47,9 @@ export const openComponentInEditor = (tabId, Keys) => {
         return {
           source: fiberNodeInstance._debugOwner._debugSource,
           ComponentName:
-            fiberNodeInstance._debugOwner?.elementType?.displayName ?? "",
+            fiberNodeInstance._debugOwner?.elementType?.displayName ||
+            fiberNodeInstance._debugOwner._debugSource?.componentName ||
+            "",
         };
       } else {
         return getFallbackDebugSource(fiberNodeInstance._debugOwner, element);
@@ -68,7 +73,8 @@ export const openComponentInEditor = (tabId, Keys) => {
     if (_debugSource)
       return {
         source: _debugSource,
-        ComponentName: elementType?.displayName ?? "",
+        ComponentName:
+          elementType?.displayName || _debugSource?.componentName || "",
       };
     const fallbackDebugSource = getFallbackDebugSource(
       fiberNodeInstance,
