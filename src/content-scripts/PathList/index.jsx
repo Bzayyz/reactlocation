@@ -288,9 +288,10 @@ function PathList({ pathList, jumpToEditor, close, position, buildTool }) {
                 // position="right"
               >
                 <div className="file_name">
-                  {".../" +
-                    item?.source?.fileName?.split("/")?.slice(-2)?.join("/") ??
-                    "-"}
+                  {
+                    item?.source?.fileName.includes("\\")?("...\\" +item?.source?.fileName?.split("\\")?.slice(-2)?.join("\\")??
+                    "-"):(".../" +item?.source?.fileName?.split("/")?.slice(-2)?.join("/")??
+                    "-") }
                 </div>
                 <button className="comp_name">
                   {item?.ComponentName ?? ""}

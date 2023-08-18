@@ -2,7 +2,7 @@
 
 
 
-前置：项目为react且使用了 @babel/preset-react-> @babel/plugin-transform-react-jsx-source
+前置：项目为react且使用了 @babel/plugin-transform-react-jsx-source 或 babel-plugin-react-component-sources
 ## 特性
 
 1. 快速定位页面代码，测试环境切换，控制台install npm包
@@ -14,9 +14,14 @@
 
 ## 使用
 
-cmd+click 点击/右键页面react元素，直接跳转vscode代码
+安装dist目录中的插件后，cmd+click 点击/右键页面react元素，直接跳转vscode代码:
+
+
+![image](assets/deemo.png)
+
 
 支持编辑器/构建工具配置、自定义path
+
 
 ![image](assets/react-location.png)
 ![image](assets/react-location2.png)
