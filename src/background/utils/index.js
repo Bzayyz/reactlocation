@@ -126,7 +126,7 @@ export const openComponentInEditor = (tabId, Keys) => {
       const { target } = e;
       // console.log(e);
       if (target instanceof HTMLElement) {
-        const { source: elemPath } = getElemPath(target);
+        const { source: elemPath } = getElemPath(target)??{};
         if (elemPath) {
           window.postMessage({ type: "singleNodePath", data: elemPath }, "*");
         }
