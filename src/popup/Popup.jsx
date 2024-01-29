@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Popup.scss";
 import HomePage from "./pages/HomePage";
-import ListPage from "./pages/ListPage";
 import SettingPage from "./pages/Settings";
 import { Tabs } from "antd";
 import { SettingOutlined, SwapOutlined } from "@ant-design/icons";

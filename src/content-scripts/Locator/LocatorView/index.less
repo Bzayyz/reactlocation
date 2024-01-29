@@ -1,0 +1,45 @@
+@theme-color: #7335d7;
+
+.locator-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  min-height: 20px;
+  z-index: 99999;
+  transition: all 0.3s;
+
+  .path-container {
+    position: absolute;
+
+    &.container-direction-0 {
+      top: 0;
+      left: 0;
+    }
+
+    &.container-direction-1 {
+      bottom: 30px;
+      left: 0;
+    }
+
+    &.container-direction-2 {
+      top: 0;
+      right: 10px;
+    }
+
+    &.container-direction-3 {
+      bottom: 30px;
+      right: 10px;
+    }
+  }
+
+  .svg-container {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+
+    svg {
+      width: 1.2em;
+      height: 1.2em;
+    }
+  }
+}

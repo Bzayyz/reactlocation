@@ -32,6 +32,29 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(ts|tsx)$/,
+        include: [path.resolve(rootDir, "./src/content-scripts")], // 指定文件夹路径
+        loader: 'ts-loader',
+        options: {
+          compilerOptions: {
+            noEmit: false,
+          },
+        },
+      },
+      {
+        test: /\.module\.less$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
+          'less-loader'
+        ]
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
@@ -164,10 +187,14 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
       "@": path.join(__dirname, "./src"),
     },
+    fallback: {
+      'react/jsx-runtime': 'react/jsx-runtime.js',
+      'react/jsx-dev-runtime': 'react/jsx-dev-runtime.js'
+    }
   },
   plugins: [
     new MiniCssExtractPlugin({
