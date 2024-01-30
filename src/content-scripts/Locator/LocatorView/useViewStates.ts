@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { unstable_batchedUpdates } from "react-dom";
 
-import { CLOUD_PREFIX, CODE_SITE_LINE_JOINER, CODE_SITE_URL } from "@/const";
+import {
+  CLOUD_PREFIX,
+  CODE_SITE_LINE_JOINER,
+  CODE_SITE_URL,
+} from "../remoteConfigs";
 
 import type { FileSource, LocatorViewProps, PathSources } from "../types";
 import { JumpType } from "../types";

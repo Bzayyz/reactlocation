@@ -17,20 +17,20 @@ export default class Background {
   }
 
   //初始化option+左键跳转vscode功能
-  initJumpSourceClient() {
-    chrome.tabs.onUpdated.addListener(async (tabId, b, tabs) => {
-      let keys = await get(shortKeyKey);
-      keys = keys?.length ? keys : ["metaKey"];
-      chrome.scripting.executeScript({
-        target: {
-          tabId,
-        },
-        world: "MAIN",
-        func: openComponentInEditor,
-        args: [tabId, keys],
-      });
-    });
-  }
+  // initJumpSourceClient() {
+  //   chrome.tabs.onUpdated.addListener(async (tabId, b, tabs) => {
+  //     let keys = await get(shortKeyKey);
+  //     keys = keys?.length ? keys : ["metaKey"];
+  //     chrome.scripting.executeScript({
+  //       target: {
+  //         tabId,
+  //       },
+  //       world: "MAIN",
+  //       func: openComponentInEditor,
+  //       args: [tabId, keys],
+  //     });
+  //   });
+  // }
 
   // changeJumpSourceClient(curKeys) {
   //   console.log(curKeys);

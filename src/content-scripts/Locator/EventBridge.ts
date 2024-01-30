@@ -1,8 +1,8 @@
-import type { PathSources, SourceType } from './types';
+import type { PathSources, SourceType } from "./types";
 
 export enum RCMessageType {
-  'SINGLE' = 'single',
-  'MULTI' = 'multi',
+  "SINGLE" = "single",
+  "MULTI" = "multi",
 }
 
 type RcMessageType2DataType = {

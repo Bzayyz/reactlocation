@@ -3,6 +3,9 @@
 @detail-background: #ffffffd2;
 @placeholder-color: #b2aac5;
 @input-text-color: #b2aac5;
+@white: #fff;
+@border-color-split: #e8e6f26e;
+@gray-5: gray;
 
 .list-container {
   background-color: @white;
@@ -49,7 +52,7 @@
     align-items: center;
     border-radius: 4px;
     background-color: @title-background;
-    .title_pane {
+    .title-pane {
       line-height: 20px;
       border-radius: 4px;
       cursor: pointer;
@@ -60,7 +63,7 @@
         color: @theme-color;
       }
     }
-    .title_pane.active {
+    .title-pane.active {
       color: @theme-color;
     }
     input {
@@ -88,7 +91,7 @@
     }
   }
 
-  .node_detail {
+  .node-detail {
     position: absolute;
     padding: 4px;
     max-width: 170px;
@@ -100,7 +103,7 @@
     align-items: flex-start;
     border-radius: 4px;
     background-color: @detail-background;
-    .detail_label {
+    .detail-label {
       word-break: break-all;
     }
     &.expand-direction-0 {
@@ -128,7 +131,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0.75em;
-    background-color: white;
+    background-color: @white;
     margin-bottom: 0.5em;
     border-radius: 0.5em;
     box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
@@ -157,7 +160,7 @@
     display: none;
   }
 
-  .file_name {
+  .file-name {
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -165,7 +168,7 @@
     display: inline-block;
   }
 
-  .comp_name {
+  .comp-name {
     color: @theme-color;
     width: fit-content;
     margin-left: 8px;
@@ -174,4 +177,10 @@
 
 .grey-text {
   color: grey;
+}
+
+.tag {
+  border-radius: 4px;
+  padding: 2px;
+  color: cyan;
 }

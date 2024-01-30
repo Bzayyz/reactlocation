@@ -1,11 +1,11 @@
-import classNames from 'classnames';
+import classNames from "classnames";
 
-import { LocatorViewMode, type LocatorViewProps } from '../types';
-import PathList from './PathList';
-import { useViewStates } from './useViewStates';
-import { FocusSvg } from './PathList/Focus';
+import { LocatorViewMode, type LocatorViewProps } from "../types";
+import PathList from "./PathList";
+import { useViewStates } from "./useViewStates";
+import { FocusSvg } from "./PathList/Focus";
 
-import styles from './index.module.less';
+import "./index.less";
 
 export const LocatorView = (props: LocatorViewProps) => {
   const {
@@ -27,19 +27,19 @@ export const LocatorView = (props: LocatorViewProps) => {
     return (
       <div
         ref={rootRef}
-        className={styles.locatorContainer}
+        className={"locator-container"}
         style={{
-          display: visible ? 'block' : 'none',
+          display: visible ? "block" : "none",
           transform: `translate( ${position.x}px , ${position.y}px )`,
         }}
       >
-        <div className={styles.svgContainer}>
+        <div className={"svg-container"}>
           <FocusSvg />
         </div>
         <div
           className={classNames(
-            styles.pathContainer,
-            styles[`containerDirection${displayDirection}`]
+            "path-container",
+            `container-direction-${displayDirection}`
           )}
         >
           <PathList

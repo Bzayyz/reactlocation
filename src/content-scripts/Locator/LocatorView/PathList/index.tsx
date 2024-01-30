@@ -3,18 +3,15 @@ import { useDebounce } from "ahooks";
 import autoAnimate from "@formkit/auto-animate";
 import classNames from "classnames";
 
-import { Tag } from "antd";
-
-import { TabKey } from "../../types";
+import { TabKey, JumpType } from "../../types";
 import type {
   Direction,
   FileSource,
   PathSources,
   SourceType,
-} from "@/Locator/types";
-import { JumpType } from "@/Locator/types";
+} from "../../types";
 
-import styles from "./index.module.less";
+import "./index.less";
 
 const Filter = (item: SourceType, filterStr: string) => {
   const str = filterStr.toLowerCase();
@@ -55,9 +52,9 @@ function PathList({
     e.stopPropagation();
     setDataKey(_key);
     e.target?.parentNode?.childNodes?.forEach((_node: any) =>
-      _node.classList.remove(styles.active)
+      _node.classList.remove("active")
     );
-    e.target?.classList.add(styles.active);
+    e.target?.classList.add("active");
   };
 
   const parent = React.useRef(null);
@@ -71,9 +68,9 @@ function PathList({
   }, [key, str, pathList]);
 
   return (
-    <div className={styles.listContainer}>
+    <div className={"list-container"}>
       <svg
-        className={styles.svgClose}
+        className={"svg-close"}
         onClick={(e) => {
           e.stopPropagation();
           close();
@@ -89,13 +86,13 @@ function PathList({
       {currentNode ? (
         <div
           className={classNames(
-            styles.nodeDetail,
-            styles[`expandDirection${listDirection}`]
+            "node-detail",
+            `expand-direction-${listDirection}`
           )}
         >
           {currentNode?.isRemote && (
-            <div className={styles.detailLabel}>
-              <Tag color="cyan">远程组件</Tag>
+            <div className={"detail-label"}>
+              <span className="tag">远程组件</span>
               <br />
               <strong>
                 {`${currentNode?.source?.remotePrefix?.split("/")?.[0]}/${
@@ -104,32 +101,32 @@ function PathList({
               </strong>
             </div>
           )}
-          <div className={styles.detailLabel}>
+          <div className={"detail-label"}>
             <strong>Path: </strong>
             {currentNode?.source?.fileName}
           </div>
-          <div className={styles.detailLabel}>
+          <div className={"detail-label"}>
             <strong>Line:column: </strong>
             {currentNode?.source?.lineNumber}:
             {currentNode?.source?.columnNumber}
           </div>
           {currentNode?.ComponentName ? (
-            <div className={styles.detailLabel}>
+            <div className={"detail-label"}>
               <strong>Component: </strong>
               {currentNode?.ComponentName}
             </div>
           ) : null}
         </div>
       ) : null}
-      <div className={styles.title} onClick={(e) => e.stopPropagation()}>
+      <div className={"title"} onClick={(e) => e.stopPropagation()}>
         <div
-          className={classNames(styles.titlePane, styles.active)}
+          className={classNames("title-pane", "active")}
           onClick={(e) => handleChangeTab(e, TabKey.ancestors)}
         >
           Ancestors
         </div>
         <div
-          className={styles.titlePane}
+          className={"title-pane"}
           onClick={(e) => handleChangeTab(e, TabKey.descendants)}
         >
           Descendants
@@ -149,7 +146,7 @@ function PathList({
               <>
                 {clickElementBundle === firstHasSourceBundle ? null : (
                   <li
-                    className={styles.noData}
+                    className={"no-data"}
                     onClick={(e) => {
                       e.stopPropagation();
                     }}
@@ -168,7 +165,7 @@ function PathList({
                         </>
                       )}
                       <br />
-                      <span className={styles.greyText}>
+                      <span className={"grey-text"}>
                         精准定位请接入对应项目：
                       </span>
                       <a
@@ -200,8 +197,8 @@ function PathList({
                         setCurrentNode(null);
                       }}
                     >
-                      <div className={styles.fileName}>
-                        {item?.isRemote && <Tag color="cyan">R</Tag>}
+                      <div className={"file-name"}>
+                        {item?.isRemote && <span className="tag">R</span>}
                         <span>
                           {item?.source?.fileName.includes("\\")
                             ? "...\\" +
@@ -216,7 +213,7 @@ function PathList({
                                   ?.join("/") as string) || "-"}
                         </span>
                       </div>
-                      <span className={styles.compName}>
+                      <span className={"comp-name"}>
                         {item?.ComponentName ?? ""}
                       </span>
                     </li>
@@ -227,7 +224,7 @@ function PathList({
           }
           return (
             <li
-              className={styles.noData}
+              className={"no-data"}
               onClick={(e) => {
                 e.stopPropagation();
               }}
@@ -245,9 +242,7 @@ function PathList({
                   </>
                 )}
                 <br />
-                <span className={styles.greyText}>
-                  精准定位请接入对应项目：
-                </span>
+                <span className={"grey-text"}>精准定位请接入对应项目：</span>
                 <a
                   href="https://aliyuque.antfin.com/ai7qv3/egrme2/hq6q6f9dp7z94k45"
                   target="__code"
@@ -265,7 +260,7 @@ function PathList({
 
   function getBundleUrl(bundle: string) {
     //自定义get远程bundle方法
-    return "";
+    return bundle;
   }
 }
 
