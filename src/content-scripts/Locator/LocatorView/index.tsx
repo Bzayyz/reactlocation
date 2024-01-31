@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import { LocatorViewMode, type LocatorViewProps } from "../types";
+import { LocatorViewMode, type LocatorViewProps } from "../../../pub/types";
 import PathList from "./PathList";
 import { useViewStates } from "./useViewStates";
 import { FocusSvg } from "./PathList/Focus";

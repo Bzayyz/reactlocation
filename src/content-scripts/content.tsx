@@ -1,15 +1,11 @@
-import { configManager } from "./Locator/ConfigManager";
-import { eventBridge } from "./Locator/EventBridge";
-import { ReactSourceGetter } from "./Locator/ReactSourceGetter";
+import { configManager } from "../pub/ConfigManager";
 import { render } from "react-dom";
 import { LocatorView } from "./Locator/LocatorView";
+import { eventBridge } from "../pub/EventBridge";
 
 export class Content {
   constructor() {
-    console.log("react start1");
-
-    document.addEventListener("DOMContentLoaded", () => {
-      new ReactSourceGetter(eventBridge, configManager.configs);
+    document.addEventListener("DOMContentLoaded", async () => {
       const { document } = window;
       const base = document.querySelector(
         "#chrome-extension-content-base-elemen"
@@ -24,6 +20,7 @@ export class Content {
         container.setAttribute("class", WRAPPER_CLASS_NAME);
       }
       document.body.appendChild(container);
+      await configManager.initConfigs();
       render(
         <LocatorView eb={eventBridge} configs={configManager.configs} />,
         container

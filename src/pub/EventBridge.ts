@@ -1,4 +1,5 @@
-import type { PathSources, SourceType } from "./types";
+import { contentClient } from "../chrome";
+import type { LocatorConfigs, PathSources, SourceType } from "./types";
 
 export enum RCMessageType {
   "SINGLE" = "single",
@@ -30,16 +31,36 @@ export class RCMessage<T extends RCMessageType> {
   }
 }
 
+const CHANGE_CONFIG = "config-change";
+const RCMSGTAG = "rc-message";
+
 export class EventBridge {
-  private cbs: Array<(data: RCMessage<RCMessageType>) => void>;
-  constructor() {
-    this.cbs = [];
-  }
+  constructor() {}
   send(data: RCMessage<RCMessageType>) {
-    this.cbs.forEach((cb) => cb(data));
+    window.postMessage({ type: RCMSGTAG, data }, "*");
   }
   onMessage(cb: (data: RCMessage<RCMessageType>) => void) {
-    this.cbs.push(cb);
+    window.addEventListener("message", (e) => {
+      if (e.data.type === RCMSGTAG) {
+        cb(e.data.data);
+      }
+    });
   }
 }
+
+export class ConfigEventBridge {
+  constructor() {}
+  send(data: Partial<LocatorConfigs>) {
+    contentClient.seedMessage({ msg: CHANGE_CONFIG, params: data });
+  }
+  onMessage(cb: (data: Partial<LocatorConfigs>) => void) {
+    contentClient.listen(CHANGE_CONFIG, (e) => {
+      if (e.msg === CHANGE_CONFIG) {
+        cb(e.params);
+      }
+    });
+  }
+}
+
+export const configEventBridge = new ConfigEventBridge();
 export const eventBridge = new EventBridge();

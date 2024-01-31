@@ -7,11 +7,20 @@ import {
   CODE_SITE_URL,
 } from "../remoteConfigs";
 
-import type { FileSource, LocatorViewProps, PathSources } from "../types";
-import { JumpType } from "../types";
-import { BuildTool, Direction, Editor, LocatorViewMode } from "../types";
-import type { RCMessage } from "../EventBridge";
-import { RCMessageType } from "../EventBridge";
+import type {
+  FileSource,
+  LocatorViewProps,
+  PathSources,
+} from "../../../pub/types";
+import { JumpType } from "../../../pub/types";
+import {
+  BuildTool,
+  Direction,
+  Editor,
+  LocatorViewMode,
+} from "../../../pub/types";
+import type { RCMessage } from "../../../pub/EventBridge";
+import { RCMessageType } from "../../../pub/EventBridge";
 import { CONTAINER_WIDTH, TOOLTIP_WIDTH } from "./const";
 
 export const useViewStates = (props: LocatorViewProps) => {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Popup.scss";
 import HomePage from "./pages/HomePage";
 import SettingPage from "./pages/Settings";
+import { LocatorUI } from "./pages/LocatorUIPages";
 import { Tabs } from "antd";
 import { SettingOutlined, SwapOutlined } from "@ant-design/icons";
 
@@ -13,6 +14,11 @@ export default class Popup extends Component {
           style={{ width: 300 }}
           size="small"
           items={[
+            {
+              label: <SettingOutlined />,
+              key: "settings",
+              children: <LocatorUI />,
+            },
             {
               label: (
                 <>
@@ -27,11 +33,6 @@ export default class Popup extends Component {
             //   key: "list",
             //   children: <ListPage />,
             // },
-            {
-              label: <SettingOutlined />,
-              key: "settings",
-              children: <SettingPage />,
-            },
           ]}
           destroyInactiveTabPane
         />

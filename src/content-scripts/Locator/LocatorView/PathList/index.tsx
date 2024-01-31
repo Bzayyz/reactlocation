@@ -3,13 +3,13 @@ import { useDebounce } from "ahooks";
 import autoAnimate from "@formkit/auto-animate";
 import classNames from "classnames";
 
-import { TabKey, JumpType } from "../../types";
+import { TabKey, JumpType } from "../../../../pub/types";
 import type {
   Direction,
   FileSource,
   PathSources,
   SourceType,
-} from "../../types";
+} from "../../../../pub/types";
 
 import "./index.less";
 
@@ -164,16 +164,6 @@ function PathList({
                           </a>
                         </>
                       )}
-                      <br />
-                      <span className={"grey-text"}>
-                        精准定位请接入对应项目：
-                      </span>
-                      <a
-                        href="https://aliyuque.antfin.com/ai7qv3/egrme2/hq6q6f9dp7z94k45"
-                        target="__code"
-                      >
-                        接入指南
-                      </a>
                       {/* / 远程 bundle 未接入 <a>接入指南</a> */}
                     </strong>
                   </li>
@@ -242,13 +232,8 @@ function PathList({
                   </>
                 )}
                 <br />
-                <span className={"grey-text"}>精准定位请接入对应项目：</span>
-                <a
-                  href="https://aliyuque.antfin.com/ai7qv3/egrme2/hq6q6f9dp7z94k45"
-                  target="__code"
-                >
-                  接入指南
-                </a>
+                {/* <span className={"grey-text"}>精准定位请接入对应项目：</span>
+                <a>接入指南</a> */}
                 {/* / 远程 bundle 未接入 <a>接入指南</a> */}
               </strong>
             </li>

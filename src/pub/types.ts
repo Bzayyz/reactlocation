@@ -1,4 +1,4 @@
-import type { EventBridge } from './EventBridge';
+import type { EventBridge } from "./EventBridge";
 
 export interface LocatorViewProps {
   eb: EventBridge;
@@ -6,8 +6,8 @@ export interface LocatorViewProps {
 }
 
 export const enum LocatorViewMode {
-  SINGLE = 'single',
-  MULTI = 'multi',
+  SINGLE = "single",
+  MULTI = "multi",
 }
 
 export type SourceType = {
@@ -25,29 +25,29 @@ export type FileSource = {
 };
 
 export const enum TabKey {
-  ancestors = 'ancestors',
-  descendants = 'descendants',
+  ancestors = "ancestors",
+  descendants = "descendants",
 }
 
 export type PathSources = Record<TabKey, SourceType[]>;
 
 export const enum BuildTool {
-  webpack = 'webpack',
-  vite = 'vite',
-  rspack = 'rspack',
-  other = 'other',
+  webpack = "webpack",
+  vite = "vite",
+  rspack = "rspack",
+  other = "other",
 }
 
 export const enum Editor {
-  vscode = 'vscode',
-  webstorm = 'webstorm',
+  vscode = "vscode",
+  webstorm = "webstorm",
 }
 
 export const enum HotKey {
-  metaKey = 'metaKey',
-  altKey = 'altKey',
-  shiftKey = 'shiftKey',
-  ctrlKey = 'ctrlKey',
+  metaKey = "metaKey",
+  altKey = "altKey",
+  shiftKey = "shiftKey",
+  ctrlKey = "ctrlKey",
 }
 
 export interface LocatorConfigs {
@@ -65,6 +65,6 @@ export const enum Direction {
 }
 
 export const enum JumpType {
-  tree = 'tree',
-  compare = 'commit',
+  tree = "tree",
+  compare = "commit",
 }

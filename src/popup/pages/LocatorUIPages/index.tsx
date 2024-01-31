@@ -11,16 +11,17 @@ import {
   message,
 } from "antd";
 
-import { Editor } from "../types";
-import { HotKey } from "../types";
-import { configManager } from "../ConfigManager";
+import { Editor } from "../../../pub/types";
+import { HotKey } from "../../../pub/types";
+import { configManager } from "../../../pub/ConfigManager";
 
 export function LocatorUI() {
   const [editor, setEditor] = useState<Editor>();
   const [customPath, setCustomPath] = useState<string>();
   const [hotKeys, setHotKeys] = useState<HotKey[]>([]);
 
-  useEffect(() => {
+  useEffect(async () => {
+    await configManager.initConfigs();
     const config = configManager.configs;
     setEditor(config.editor);
     setCustomPath(config.customPath);
@@ -94,34 +95,12 @@ export function LocatorUI() {
       </Tabs.TabPane>
       <Tabs.TabPane tab="使用指北" key="1">
         <div style={{ height: "480px", overflow: "auto" }}>
-          语雀：
-          <a
-            href="https://aliyuque.antfin.com/ai7qv3/egrme2/nby3c974msbkbar3"
-            target="__blank"
-            style={{ fontSize: 24 }}
-          >
-            详细文档
-          </a>
-          <br />
           <h2>用途</h2>
           <p id="test">
             ReactLocator 通常在本地开发环境使用。ReactLocator
             可以帮助你快速定位并直接跳转到 React 组件代码的位置。目前，Locator
             无需任何配置就支持定位已经在本地运行的程序集/拓展点/小程序。例如，如果想找工单代码，请先
             pnpm start 工单项目。 <br />
-            <a
-              href=" https://code.alibaba-inc.com/xixikf-appx/reactlocator"
-              target="blank"
-            >
-              小程序源码
-            </a>
-            {"        "}
-            <a
-              href="https://github.com/facebook/react/blob/5c607369ceebe56d85175df84b7b6ad58dd25e1f/packages/react-reconciler/src/ReactChildFiber.js#L450"
-              target="blank"
-            >
-              React相关源码
-            </a>
             <br />
           </p>
           <br />
@@ -133,10 +112,10 @@ export function LocatorUI() {
           <br />
           <p>
             目前只支持跳转 <strong>本地启动</strong>{" "}
-            的程序集/小程序/拓展点等资源的跳转，且不会入侵/hack项目代码，可以放心使用。
+            的资源的跳转，且不会入侵/hack项目代码，可以放心使用。
           </p>
           <p>
-            本地启动的程序集/小程序/拓展点等资源的跳转，不会入侵/hack项目代码，可以放心使用。
+            本地启动的资源的跳转，不会入侵/hack项目代码，可以放心使用。
             线上资源目前只支持跳到对应项目code平台的主页。实验室功能支持远程跳转到具体代码位置。
           </p>
           <br />
@@ -146,17 +125,6 @@ export function LocatorUI() {
             Descendants（所有子孙），点击切换看看？
             祖先列表涵盖了从当前点击的节点到根节点的所有祖先，子孙列表涵盖了从当前点击的节点到叶子节点的所有子孙。
             另外，点击左上角可以 filter 过滤检索。
-          </p>
-          <br />
-          <h2>实验室</h2>
-          <p>
-            远程组件跳转目前已经有POC实现，需要对应项目的接入：
-            <a
-              href="https://aliyuque.antfin.com/ai7qv3/egrme2/hq6q6f9dp7z94k45"
-              target="blank"
-            >
-              如何实现远程项目的代码跳转
-            </a>
           </p>
           <br />
           <p>设置了DisplayName的组件会在列表右侧展示组件名，以方便检索。</p>

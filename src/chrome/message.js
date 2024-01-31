@@ -45,12 +45,14 @@ class ContentClient {
 
   startListen() {
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+
       dispatchEvent(this.listeners, request, sendResponse);
       return true;
     });
   }
 
   seedMessage(message) {
+
     return new Promise((resolve) => {
       chrome.runtime.sendMessage(message, (res) => {
         resolve(res);

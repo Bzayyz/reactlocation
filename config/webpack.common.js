@@ -33,7 +33,7 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        include: [path.resolve(rootDir, "./src/content-scripts")], // 指定文件夹路径
+        // include: [path.resolve(rootDir, "./src/content-scripts")], // 指定文件夹路径
         loader: 'ts-loader',
         options: {
           compilerOptions: {
