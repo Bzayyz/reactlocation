@@ -337,9 +337,6 @@ export default function initSourceClient(config) {
 
     leftClickHandler(e: any) {
       this._firstHasSourceBundle = "";
-      e.preventDefault();
-      e.stopPropagation();
-
       const allKeys = ["metaKey", "altKey", "shiftKey", "ctrlKey"];
       const selectedKeys = this.configs.hotKeys?.length
         ? this.configs.hotKeys
@@ -351,6 +348,8 @@ export default function initSourceClient(config) {
         selectedKeys.every((key) => e[key]) &&
         unSelectedKeys.every((key) => !e[key])
       ) {
+        e.preventDefault();
+        e.stopPropagation();
         const { target } = e;
         if (target instanceof HTMLElement) {
           const sourceData = this.getElemPath(target);
